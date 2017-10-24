@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="../controller/controller.js"></script>
+</head>
+<body ng-app="myapp" ng-controller="mycontroller">
+
+<div>
+    <input type="text" placeholder="type here" ng-model="typing">
+    
+<p>{{typing}}</p>
+  <button type="submit" ng-click="submit()">submit</button>  
+    </div>
+   <input type="text" step=1 min=0 max=4 ng-model="uptolimit"> 
+ <table style="border:solid">
+   <thead>
+   <th>name</th>
+   <th>address</th>
+   <th>likes</th>
+   <th>dislikes</th>
+   </thead>
+   <tbody>
+    <tr ng-repeat="employe in employess|uptolimit">
+        <td>{{employe.name|touppercase}}</td>
+        <td>{{employe.address}}</td>
+        <td>{{employe.likes}}</td>
+        <td>{{employe.dislikes}}</td>
+        <td><button ng-click="likesinc(employe)">likes</button>
+        <button ng-click="dislikesinc(employe)">dislikes</button></td>
+    </tr>   
+       
+       
+   </tbody>
+ </table>   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+</html>

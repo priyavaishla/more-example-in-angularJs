@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <script src="../angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="../controller/priController.js"></script>
+</head>
+<body ng-app="myapp" ng-controller="pricontroller">
+<select ng-model="sotingcolom">
+    <option value="name">name</option>
+     <option value="salary">salary</option>
+      <option value="dateofbirth">datebirth</option>
+       <option value="address">address</option>
+        <option value="designation">designation</option>
+</select>
+<input type="text" placeholder="searchtxthere" ng-model="searchtxt.name">
+<input type="number" step="1" min="0" max="6" ng-model="rowlimit"/>
+<ol>
+    <li ng-repeat="emp in employes|limitTo:rowlimit|orderBy:sotingcolom|filter:searchtxt">
+        
+        <table border="1px">
+           <thead>
+           <th>name</th>
+           <th>address</th>
+           <th>dateofbirth</th>
+           <th>designation</th>
+           <th>pic</th>
+           <th>likes</th>
+           <th>dislikes</th>
+           <th>salary(numeric)</th>
+           <th>salary(currency)</th>
+           
+           </thead>
+           <tbody>
+               <tr>
+                   <td>{{emp.name|uppercase}}</td>
+                   <td>{{emp.address|lowercase}}</td>
+                   <td>{{emp.dateofbirth|date:"dd/MM/yyyy"}}</td>
+                   <td>{{emp.designation|uppercase}}</td>
+                   <td><img src="{{emp.pic}}"></td>
+                   <td>{{emp.likes}}</td>
+                   <td>{{emp.dislikes}}</td>
+                   <td>{{emp.salary|number:1}}</td>
+                   <td>{{emp.salary|currency:"$":1}}</td>
+                   <td><button ng-click="likes(emp)">likes</button> <button ng-click="dislikes(emp)">dislikes</button></td>
+               </tr>
+           </tbody>
+        </table>    
+    </li>
+</ol>
+</body>
+</html>
